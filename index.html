@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <script src="./js/third-party/aframe.min.js"></script>
+    <script src="./js/third-party/aframe-ar.js"></script>
+    <script src="./js/third-party/aframe-extras.loaders.min.js"></script>
+    <script src="./js/main.js" defer></script>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="loading-wrapper">
+      <div class="loading-text">Loading...</div>
+    </div>
+
+    <div class="contact-buttons">
+      <a href="tel:+380949108425">
+        <img src="./images/phone-icon.svg" />
+      </a>
+      <a href="mailto:r@noosphere.com">
+        <img src="./images/email-icon.svg" />
+      </a>
+      <a href="https://www.facebook.com/ryabokon">
+        <img src="./images/facebook-icon.svg" />
+      </a>
+      <a href="https://noosphereglobal.com">
+        <img src="./images/website-icon.svg" />
+      </a>
+    </div>
+
+    <div class="play-video-button-wrapper" style="display: none">
+      <div class="play-video-button">
+        <div class="play-video-button-border">Play video</div>
+      </div>
+    </div>
+
+    <a-scene
+      embedded
+      renderer="antialias: true; colorManagement: true; logarithmicDepthBuffer: true; physicallyCorrectLights: false;"
+      vr-mode-ui="enabled: false;"
+      arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+    >
+      <a-assets>
+        <video
+          webkit-playsinline
+          playsinline
+          src="./assets/video.mov"
+          loop="true"
+          id="vid"
+        ></video>
+      </a-assets>
+
+      <a-marker
+        type="barcode"
+        value="5"
+        emitevents
+        id="marker"
+        smooth="true"
+        smoothCount="10"
+      >
+        <a-video
+          src="#vid"
+          width="16"
+          height="9"
+          rotation="-90 0 0"
+          scale="0.27 0.27 0.27"
+          position="1.27 0 2.3"
+          visible="false"
+        ></a-video>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
+
